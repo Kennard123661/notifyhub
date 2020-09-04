@@ -29,14 +29,12 @@ class watch(object):
         return wrapper
 
 
-def _send_message(message, messenger):
-    if messenger == 'telegram':
-        telegram.send_message(message)
-    else:
-        raise NotImplementedError
-
-
 def send_message(message, messenger):
+    frame_info = inspect.stack()[1]
+    filepath = os.path.abspath(frame_info[1])
+    del frame_info  # drop the reference to the stack frame to avoid reference cycles
+    
+    message = '{}\nfrom {}'.format(message, filepath)
     try:
         if messenger == 'telegram':
             telegram.send_message(message)
