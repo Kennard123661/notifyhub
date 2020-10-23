@@ -1,2 +1,6 @@
 .idea/*
 *.pyc
+dist/
+notifyhub.egg-info/
+build/
+dist/

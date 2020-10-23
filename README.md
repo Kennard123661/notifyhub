@@ -39,4 +39,6 @@ Then, visit `https://api.telegram.org/bot<BOT_TOKEN>/getUpdates` e.g. `https://a
 In this case, our chat id is `375385701`, and replace this value into `CHAT_ID` in `messengers/telegram`. Your bot 
 should be ready, to test, run `messengers/telegram.py`.
 
+```
 python setup.py install
+```
