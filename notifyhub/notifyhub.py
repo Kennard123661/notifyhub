@@ -49,6 +49,8 @@ def send_message(message, messenger, **kwargs):
             raise NotImplementedError
     except:
         _handle_exception(message=message, messenger=messenger)
+        return False
+    return True
 
 
 def _handle_exception(message, messenger):
