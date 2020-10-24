@@ -16,7 +16,7 @@ class watch(object):
     def __call__(self, func):
         # get filename
         @wraps(func)
-        def wrapper():
+        def wrapper(*args, **kwargs):
             source_file = inspect.getsourcefile(func)
             source_filename = os.path.split(source_file)[-1].split('.')[:-1]
 
@@ -26,7 +26,7 @@ class watch(object):
                          messenger=self.messenger,
                          **self.kwargs)
             try:
-                func()
+                func(*args, **kwargs)
                 send_message(message='INFO: task {} completed'.format(function_info),
                              messenger=self.messenger,
                              **self.kwargs)
