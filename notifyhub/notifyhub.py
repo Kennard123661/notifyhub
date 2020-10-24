@@ -1,6 +1,7 @@
 import inspect
 import os
 from notifyhub.messengers import telegram
+from functools import wraps
 
 CHAT_ID = '238741623'
 BOT_TOKEN = '1386719865:AAG1pim7Di8pUOJYOgh_tUMLGTLI2BPHk9Q'
@@ -14,6 +15,7 @@ class watch(object):
 
     def __call__(self, func):
         # get filename
+        @wraps(func)
         def wrapper():
             source_file = inspect.getsourcefile(func)
             source_filename = os.path.split(source_file)[-1].split('.')[:-1]

@@ -8,13 +8,18 @@ finished processing! I use this extensive for code with long processing time.
 from notifyhub.messengers.telegram import send_message
 from notifyhub.notifyhub import watch
 
+CHAT_ID = '238741623'
+BOT_TOKEN = '1386719865:AAG1pim7Di8pUOJYOgh_tUMLGTLI2BPHk9Q'
+
+
 # send a 'hello' message via telegram
-send_message(message='hello', messenger='telegram')
+send_message(message='hello', messenger='telegram', chat_id=CHAT_ID, bot_token=BOT_TOKEN)
 
 # get notified when your function starts/ends/crashes.
-@watch(messenger="telegram")
+@watch(messenger="telegram", chat_id=CHAT_ID, bot_token=BOT_TOKEN)
 def main():
     print(1 + 1)
+
 
 main()
 ```
