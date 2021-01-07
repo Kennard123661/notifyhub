@@ -1,51 +1,55 @@
-# Notify Me
+# NotifyHub
 
-Get your instant messaging apps to notify you when at key points of your function or when your script has
-finished processing! I use this extensive for code with long processing time.
+Library to send you messages from your python scripts.
 
-# Usage
+## Setup
+
+### For contributors:
+
+```bash
+conda create -n notifyhub python==3.6.6  # works with RPi
+conda activate notifyhub
+pip install -r requirements.txt
+```
+
+### For users:
+
+```bash
+cd ..  # parent directory
+pip install notifyhub
+```
+
+## Usage
 ```python
-from notifyhub.messengers.telegram import send_message
-from notifyhub.notifyhub import watch
+from notifyhub.notifier import send_message, watch
 
-CHAT_ID = '238741623'
-BOT_TOKEN = '1386719865:AAG1pim7Di8pUOJYOgh_tUMLGTLI2BPHk9Q'
+CONFIG_FP = '<CONFIG_FP>'  # config .json file
+send_message(message="hello there", config_fp=CONFIG_FP)  # sends message 'hello there'
 
-
-# send a 'hello' message via telegram
-send_message(message='hello', messenger='telegram', chat_id=CHAT_ID, bot_token=BOT_TOKEN)
-
-# get notified when your function starts/ends/crashes.
-@watch(messenger="telegram", chat_id=CHAT_ID, bot_token=BOT_TOKEN)
+# watch program to check if it crashes/completes
+@watch(config_fp=CONFIG_FP)
 def main():
-    print(1 + 1)
+    print('do something')
+```
 
+### Telegram
 
-main()
+Your telegram configuration file should look like:
+```
+{
+    "bot": "telegram",
+    "bot-token": "<BOT TOKEN>",
+    "chat-id": <CHAT ID>
+}
 ```
 
 
-# Telegram
-
-# Setup
-
-Search for BotFather in telegram and use the following commands to create the bot. Take note of your bot's token
-(e.g. 1017471971: AAGpJEEFZH9Mlj3_GakRtaKeMK - dmaxQVKE) and set `BOT_TOKEN` in `messengers / telegram.py`
-
-![bot - creation](. / notify - me / extras / telegram / creating - testbot.PNG)
-
-Then, visit `t.me / notifymetestbot` in your browser and send a message to your bot. The first message is needed to get
-your `CHAT_ID`.
-
-![bot - creation](. / notify - me / extras / telegram / say - hi.PNG)
-
-Then, visit `https: // api.telegram.org / bot < BOT_TOKEN > /getUpdates` e.g. `https: // api.telegram.org / bot1017471971: AAGpJEEFZH9Mlj3_GakRtaKeMK - dmaxQVKE / getUpdates` to get your chat id
-
-![chat - id - retrieval](. / notify - meextras / telegram / chat - id.PNG)
-
-In this case, our chat id is `375385701`, and replace this value into `CHAT_ID` in `messengers / telegram`. Your bot
-should be ready, to test, run `messengers / telegram.py`.
-
+### Discord
+Your discord configuration file should look like:
 ```
-python setup.py install
+{
+    "bot": "discord",
+    "bot-token": "<BOT TOKEN>",
+    "chat-id": <CHANNEL ID>
+}
 ```

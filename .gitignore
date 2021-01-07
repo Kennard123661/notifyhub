@@ -4,3 +4,4 @@ dist/
 notifyhub.egg-info/
 build/
 dist/
+configs/*
