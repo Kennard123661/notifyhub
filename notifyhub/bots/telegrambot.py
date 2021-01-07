@@ -5,7 +5,7 @@ CHAT_ID = '238741623'
 BOT_TOKEN = '1386719865:AAG1pim7Di8pUOJYOgh_tUMLGTLI2BPHk9Q'
 
 
-def send_message(message, chat_id, bot_token):
+def send_message(message: str, chat_id: int, bot_token: str):
     payload = {
         'chat_id': chat_id,
         'text': message + '\nPC: {}'.format(platform.node()),

@@ -24,8 +24,8 @@ class SendMessageClient(SingleTaskClient):
         await channel.send(self.message)
 
 
-def send_message(bot_token: str, channel_id: int, message: str):
-    client = SendMessageClient(message=message, channel_id=channel_id)
+def send_message(bot_token: str, chat_id: int, message: str):
+    client = SendMessageClient(message=message, channel_id=chat_id)
     client.run(bot_token)
 
 
@@ -34,7 +34,7 @@ def main():
     fp = '/home/kennardng/projects/notifyhub/configs/discord.json'
     with open(fp, 'r') as f:
         config = json.load(f)
-    send_message(bot_token=config['bot-token'], channel_id=int(config['channel-id']), message='goodbye')
+    send_message(bot_token=config['bot-token'], chat_id=int(config['channel-id']), message='goodbye')
 
 
 if __name__ == '__main__':
