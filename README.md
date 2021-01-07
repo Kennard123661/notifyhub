@@ -5,7 +5,7 @@ finished processing! I use this extensive for code with long processing time.
 
 # Usage
 ```python
-from notifyhub.messengers.telegram import send_message
+from notifyhub.bots.telegram import send_message
 from notifyhub.notifyhub import watch
 
 CHAT_ID = '238741623'

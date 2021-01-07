@@ -1,4 +1,4 @@
-from notifyhub.messengers.telegram import send_message
+from notifyhub.bots.telegram import send_message
 from notifyhub.notifyhub import watch
 
 

@@ -1,10 +1,7 @@
 import inspect
 import os
-from notifyhub.messengers import telegram
+import notifyhub.bots as bots
 from functools import wraps
-
-CHAT_ID = '238741623'
-BOT_TOKEN = '1386719865:AAG1pim7Di8pUOJYOgh_tUMLGTLI2BPHk9Q'
 
 
 class watch(object):
@@ -59,9 +56,8 @@ def _handle_exception(message, messenger):
     print('ERROR: Message {} failed to be send'.format(message, messenger))
 
 
-@watch(messenger='telegram', chat_id=CHAT_ID, bot_token=BOT_TOKEN)
 def main():
-    print(1 + 1)
+    raise NotImplementedError
 
 
 if __name__ == '__main__':
