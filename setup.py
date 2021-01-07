@@ -5,16 +5,17 @@ with open("README.md", "r") as fh:
 
 setup(
     name="notifyhub",  # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Example Author",
     author_email="author@example.com",
-    description="Notification on telegram",
+    description="Notification on instant messaging platforms",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yhchong/notify-me",
+    url="https://github.com/Kennard123661/notifyhub",
     packages=find_packages(),
     install_requires=[
-        'requests'
+        'requests',
+        'discord.py'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
