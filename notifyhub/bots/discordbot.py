@@ -30,7 +30,7 @@ async def _send_message(bot_token: str, chat_id: int, message: str):
     await client.connect()
 
 
-def send_message(bot_token: str, chat_id: int, message: str):
+def send(bot_token: str, chat_id: int, message: str):
     loop = asyncio.get_event_loop()
     loop.run_until_complete(_send_message(bot_token=bot_token, chat_id=chat_id, message=message))
 
@@ -40,8 +40,8 @@ def main():
     fp = '/home/kennardngpoolhua/projects/notifyhub/configs/discord.json'
     with open(fp, 'r') as f:
         config = json.load(f)
-    send_message(bot_token=config['bot-token'], chat_id=int(config['chat-id']), message='gb0')
-    send_message(bot_token=config['bot-token'], chat_id=int(config['chat-id']), message='gb1')
+    send(bot_token=config['bot-token'], chat_id=int(config['chat-id']), message='gb0')
+    send(bot_token=config['bot-token'], chat_id=int(config['chat-id']), message='gb1')
 
 
 if __name__ == '__main__':

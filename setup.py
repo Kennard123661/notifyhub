@@ -5,9 +5,9 @@ with open("README.md", "r") as fh:
 
 setup(
     name="notifyhub",  # Replace with your own username
-    version="0.0.2",
-    author="Example Author",
-    author_email="author@example.com",
+    version="0.0.3",
+    author="Kennard Ng",
+    author_email="kennard.ng.pool.hua@gmail.com",
     description="Notification on instant messaging platforms",
     long_description=long_description,
     long_description_content_type="text/markdown",

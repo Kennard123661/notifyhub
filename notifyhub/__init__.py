@@ -27,18 +27,18 @@ class watch(object):
 
             function_name = str(func.__name__)
             function_info = '.'.join(source_filename + [function_name])
-            send_message(message='INFO: task {} started!'.format(function_info), config=self.config)
+            send(message='INFO: task {} started!'.format(function_info), config=self.config)
             try:
                 func()
-                send_message(message='INFO: task {} completed'.format(function_info), config=self.config)
+                send(message='INFO: task {} completed'.format(function_info), config=self.config)
             except:
-                send_message(message='ERR: task {} failed'.format(function_info), config=self.config)
+                send(message='ERR: task {} failed'.format(function_info), config=self.config)
                 raise  # raises the exception function
         return wrapper
 
 
-def send_message(message: str, config: dict = None, config_fp: os.path = None):
-    assert config is not None or config_fp is not None
+def send(message: str, config: dict = None, config_fp: os.path = None):
+    assert config is not None or config_fp is not None, 'at least config or config_fp must be filled up'
 
     frame_info = inspect.stack()[1]
     filepath = os.path.abspath(frame_info[1])
@@ -53,9 +53,9 @@ def send_message(message: str, config: dict = None, config_fp: os.path = None):
     bot_token = config['bot-token']
     try:
         if bot == 'telegram':
-            telegrambot.send_message(message, chat_id=chat_id, bot_token=bot_token)
+            telegrambot.send(message, chat_id=chat_id, bot_token=bot_token)
         elif bot == 'discord':
-            discordbot.send_message(message=message, chat_id=int(chat_id), bot_token=bot_token)
+            discordbot.send(message=message, chat_id=int(chat_id), bot_token=bot_token)
         else:
             raise ValueError('no such bot type')
     except Exception as e:
@@ -72,8 +72,8 @@ def main():
     config_dir = '/home/kennardng/projects/notifyhub/configs'
     discord_fp = os.path.join(config_dir, 'discord.json')
     telegram_fp = os.path.join(config_dir, 'telegram.json')
-    send_message(message='hello', config_fp=discord_fp)
-    send_message(message='hello', config_fp=telegram_fp)
+    send(message='hello', config_fp=discord_fp)
+    send(message='hello', config_fp=telegram_fp)
 
 
 if __name__ == '__main__':

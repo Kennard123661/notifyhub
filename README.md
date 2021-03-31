@@ -20,11 +20,13 @@ pip install notifyhub
 ```
 
 ## Usage
+
 ```python
-from notifyhub import send_message, watch
+from notifyhub import send, watch
 
 CONFIG_FP = '<CONFIG_FP>'  # config .json file
-send_message(message="hello there", config_fp=CONFIG_FP)  # sends message 'hello there'
+send(message="hello there", config_fp=CONFIG_FP)  # sends message 'hello there'
+
 
 # watch program to check if it crashes/completes
 @watch(config_fp=CONFIG_FP)
