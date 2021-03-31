@@ -5,3 +5,7 @@ notifyhub.egg-info/
 build/
 dist/
 configs/*
+
+Pipfile
+*.lock
+UNKNOWN.egg-info/*
