@@ -1,13 +1,22 @@
 import inspect
 import os
 import json
+
+import yaml
+
 from notifyhub.bots import discordbot, telegrambot
 from functools import wraps
 
 
 def _read_config_fp(config_fp: os.path):
     with open(config_fp, 'r') as f:
-        config = json.load(f)
+        ext = config_fp.split('.')[-1]
+        if ext == 'json':
+            config = json.load(f)
+        elif ext == 'yaml':
+            config = yaml.full_load(f)
+        else:
+            raise ValueError('no such extension for config: {}'.format(ext))
     return config
 
 
@@ -69,8 +78,9 @@ def _handle_exception(message: str, bot: str, exception: Exception):
 
 
 def main():
-    config_dir = '/home/kennardng/projects/notifyhub/configs'
-    discord_fp = os.path.join(config_dir, 'discord.json')
+    config_dir = '/mnt/Data/Documents/Projects/Personal/notifyhub/configs'
+    discord_fp = os.path.join(config_dir, 'discord.yaml')
+    # assert os.path.exists(discord_fp)
     telegram_fp = os.path.join(config_dir, 'telegram.json')
     send(message='hello', config_fp=discord_fp)
     send(message='hello', config_fp=telegram_fp)

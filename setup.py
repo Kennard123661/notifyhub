@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="notifyhub",  # Replace with your own username
-    version="0.0.3",
+    version="0.0.4",
     author="Kennard Ng",
     author_email="kennard.ng.pool.hua@gmail.com",
     description="Notification on instant messaging platforms",
@@ -15,7 +15,8 @@ setup(
     packages=find_packages(),
     install_requires=[
         'requests',
-        'discord.py'
+        'discord.py',
+        'pyyaml'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

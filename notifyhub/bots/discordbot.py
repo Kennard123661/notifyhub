@@ -1,6 +1,7 @@
 import discord
 import asyncio
 from abc import abstractmethod
+import yaml
 
 
 class SingleTaskClient(discord.Client):
@@ -37,9 +38,9 @@ def send(bot_token: str, chat_id: int, message: str):
 
 def main():
     import json
-    fp = '/home/kennardngpoolhua/projects/notifyhub/configs/discord.json'
+    fp = '/mnt/Data/Documents/Projects/Personal/notifyhub/configs/discord.yaml'
     with open(fp, 'r') as f:
-        config = json.load(f)
+        config = yaml.full_load(f)
     send(bot_token=config['bot-token'], chat_id=int(config['chat-id']), message='gb0')
     send(bot_token=config['bot-token'], chat_id=int(config['chat-id']), message='gb1')
 
