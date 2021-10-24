@@ -11,7 +11,7 @@ class SingleTaskClient(discord.Client):
 
     async def on_ready(self):
         await self.execute_task()
-        await self.logout()
+        await self.close()
 
 
 class SendMessageClient(SingleTaskClient):
